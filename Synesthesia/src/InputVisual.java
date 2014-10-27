@@ -90,7 +90,7 @@ public class InputVisual extends PApplet{
 		switch(this.mode){
 		case TEXTTOCONVERT:
 			drawInstructions(new Tuple(300, 50), "Welcome to Silly Synestheisa App!",
-					new Tuple(10, 65), "This app takes in text of your choice and information about your"
+					new Tuple(10, 65), "This app takes in text of your choice and information about your "
 							+ "synesthesia characteristics and outputs an HTML file with your "
 							+ "text converted to the \"right\" colors. Enter your text below.");
 			drawButtons();
