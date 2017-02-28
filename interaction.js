@@ -110,13 +110,13 @@ function produce_output_text(){
 	var word_positions = {};
 	for(item of grapheme_queue){
 		if(item.length > 1){
-			var index = 0;
-			while(index != -1){
-				index = input_text.indexOf(item, index+1);
+			var index = input_text.indexOf(item, index+1);
+			if(index != -1){
 				word_positions[index] = item;
 			}
 		}
 	}
+	console.log(word_positions);
 	skip_until = null;
 	for(var i = 0; i < input_text.length; i++){
 		if(skip_until != null && i < skip_until){
