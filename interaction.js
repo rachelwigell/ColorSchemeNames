@@ -1582,9 +1582,22 @@ $('#done').click(function(){
 	}
 })
 
-$('#new').click(function(){
+$('#again').click(function(){
 	calculated_name = randomize(syllables, 0);
 	done_thinking();
+})
+
+$('#new').click(function(){
+	var processing = Processing.getInstanceById('processing');
+	processing.startOver();
+	$('#input').show();
+	choosing = true;
+	$('.choice').text("x");
+	$('.choice').css("cursor", 'pointer');
+	choice_queue = [];
+	color_queue();
+	$('#name_block').hide();
+	$('#processing').show();
 })
 
 function hexToRgb(hex) {
@@ -1620,10 +1633,10 @@ function randomize(blocks, tries){
 			word += block;
 		}
 	}
-	if(word == "" && tries < 5){
+	if(tries < 50 && (word == "" || word == calculated_name)){
 		return randomize(blocks, tries+1);
 	}
-	else if(tries >= 5){
+	else if(tries >= 50){
 		return "I got nothing. Sorry!";
 	}
 	else{
@@ -1720,5 +1733,4 @@ function done_thinking(){
 	$('#name').text(calculated_name);
 	$('#name_block').show();
 	$('#processing').hide();
-
 }

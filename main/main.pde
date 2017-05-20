@@ -49,3 +49,8 @@ public void renderThinkingText(){
   fill(0);
   text("Thinking...", colorPicker.radius-25, colorPicker.radius);
 }
+
+public void startOver(){
+  vennDiagram = null;
+  colorPicker.drawColorPicker();
+}
