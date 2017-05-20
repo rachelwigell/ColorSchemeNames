@@ -1,0 +1,23 @@
+p {
+  font-size: small;
+}
+
+.choice{
+  margin: 10px;
+  padding: 10px 20px 10px 20px;
+  color: white;
+  text-align: right;
+  cursor: pointer;
+}
+
+#instructions{
+  text-align: left;
+}
+
+#submit{
+  background-color: black;
+}
+
+#name{
+  font-size: 72pt;
+}

@@ -4,33 +4,7 @@
 	<link rel="stylesheet" href="libraries/foundation-5.5.2/css/normalize.css">
 	<script src="libraries/processing.js"></script>
 	<script src="libraries/jquery-1.11.3.min.js"></script>
-	<style>
-		p {
-			font-size: small;
-		}
-		#types-survey{
-			width: 40%;
-		}
-		#submit-types-survey{
-			width: 80%;
-		}
-		#other{
-			width: 80%;
-		}
-		#grapheme{
-			font-size: 96;
-			font-weight: bold;
-		}
-		#color-input-done{
-			width: 80%;
-		}
-		#text-input-done{
-			width: 40%;
-		}
-		#output{
-			text-align: left;
-		}
-	</style>
+	<link rel="stylesheet" href="styles.css"></link>
 </head>
 <body>
 	<!-- Code for Facebook Share button -->
@@ -44,65 +18,40 @@
 	}(document, 'script', 'facebook-jssdk'));</script>
 
 	<center>
-		<h2>Synesthesia</h2>
-		<p>If you have grapheme-color synesthesia, fill out a quick survey about what color each of these graphemes is for you, then type some text in the textbox to have it converted to "your" colors!</p><br>
-	</center>
+		<canvas id="processing" data-processing-sources="
+			main/main.pde
+			main/TupleClass.pde
+			main/ColorPickerClass.pde
+			main/VennDiagramClass.pde
+		"></canvas>
 
-	<div class="row" id="types-survey">
-		<div class="small-12 columns">
-			<h5>What types of graphemes have colors for you?</h5><br>
-			<input id="letters" type="checkbox"><label for="letters">Letters</label><br>
-			<input id="capital-different" type="checkbox"><label for="capital-different">Capital and lowercase letters have different colors</label><br>
-			<input id="digits" type="checkbox"><label for="digits">Digits</label><br>
-			<input id="days-of-week" type="checkbox"><label for="days-of-week">Days of the week</label><br>
-			<input id="months" type="checkbox"><label for="months">Month names</label>
-			<p>Anything we missed? Please type them here, separated by spaces:</p>
-			<input id="other" type="textarea"><br><br>
-			<button class="button round" id="submit-types-survey">Submit</button>
-		</div>
-	</div>
-
-	<center>
-	<div class="row" id="current-grapheme" hidden>
-		<div class="small-6 columns">
-			<h5>What color is...?</h5>
-			<p id="grapheme"></p>
-			<div class="small-6 columns">
-				<a id="prev-grapheme"><< Prev</a>
+		<div class="row" id="input">
+			<div class="small-4 columns" id="instructions">
+				What colors are in your color scheme? Use the color picker above to select up to 5 colors.
 			</div>
-			<div class="small-6 columns">
-				<a id="next-grapheme">Next >></a>
-			</div><br><br>
-			<button class="button round" id="color-input-done">Done</button>
+			<div class="small-4 columns">
+				<button class="button round" id="submit"">Select color</button>
+			</div>
+			<div class="small-4 columns">
+				<button class="button round" id="done">Done selecting colors</button>
+			</div>
 		</div>
-		<div class="small-6 columns">
-			<canvas id="processing" data-processing-sources="
-				main/main.pde
-				main/TupleClass.pde
-			"></canvas>
+		<div class="row" id="name_block" hidden>
+			<div class="small-12 columns">
+				<p>You should name your color scheme...</p>
+				<p id="name"></p>
+				<button class="button round" id="new"">Try again</button>
+			</div>
 		</div>
-	</div>
-
-	<div class="row" id="input-section" hidden>
-		<div class="small-12 columns">
-			<h4>What text would you like to convert?</h4><br>
-			<textarea id="input" rows="10" columns="50"></textarea><br>
-			<button class="button round" id="text-input-done">Done</button>
+		<div class="row" id="preview">
+			<div class="small-12 columns">
+				<span class="choice" id="0">x</span>
+				<span class="choice" id="1">x</span>
+				<span class="choice" id="2">x</span>
+				<span class="choice" id="3">x</span>
+				<span class="choice" id="4">x</span>
+			</div>
 		</div>
-	</div>
-
-	<div class="row" id="output-section" hidden>
-		<div class="small-12 columns">
-			<h4>Your converted text:</h4><br>
-			<h5 id="output"></h5>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="small-12 columns">
-			<a id="prev" hidden><< Back</a>
-		</div>
-	</div>
 
 	<div class="row">
 		<div class="small-2 columns">
